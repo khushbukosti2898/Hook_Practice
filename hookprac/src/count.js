@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios'
 
 /* function Count(){
     // let [btntext,setButtonText]=useState("please Click Me");
@@ -40,7 +41,7 @@ export default Count; */
   }
   export default App; */
 
-  function App() {
+  /* function App() {
     const first = useRef(null);
     const second = useRef(null);
 
@@ -57,4 +58,18 @@ export default Count; */
       </>
     );
   }
-  export default App;
+  export default App; */
+ 
+export default function App(){
+  let [res,setRes] = useState()
+  function callApi(){
+    axios.get('https://node-fake-api.herokuapp.com/user/')
+    .then((res)=>{setRes(res.data.data);})
+    .catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{callApi()},[])
+return(<>{console.log(res)}</>
+
+ )
+}
